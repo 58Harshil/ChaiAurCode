@@ -31,3 +31,4 @@ console.log(url.includes('harshil'));
 console.log(gameName.split("-"));
 //console.log(gameName);
 
+console.log(gameName.__proto__);

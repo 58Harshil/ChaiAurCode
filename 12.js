@@ -1,5 +1,5 @@
 
-/*const score = 400;
+const score = 400;
 console.log(score);
 
 const balance = new Number(100)
@@ -14,8 +14,8 @@ console.log(otherNumber.toPrecision(6));
 const hundreds = 1000000
 console.log(hundreds.toLocaleString());
 
-*/
-/*
+
+
 console.log(Math);
 console.log(Math.abs(-50));
 console.log(Math.round(4.6));
@@ -24,7 +24,7 @@ console.log(Math.floor(3.1));
 console.log(Math.min(4,6,5,5,4,8));
 console.log(Math.random());
 console.log(Math.floor(Math.random()*10)+1);
-*/
+
 const min = 5
 const max = 10;
 //Math.random() * (max - min + 1)
