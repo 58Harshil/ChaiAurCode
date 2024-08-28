@@ -13,8 +13,8 @@ let numGuess = 1;
 let playGame = true;
 
 if (playGame) {
-    submit.addEventListener("click", function (e) {
-        e.preventDefault();
+    submit.addEventListener("click", function (p) {
+        p.preventDefault();
         const guess = parseInt(userInput.value);
         console.log(guess);
 
@@ -31,7 +31,7 @@ function validateGuess(guess) {
         alert("Please enter a valid number between 1 and 100");
     } else {
         prevGuess.push(guess); // Corrected usage of push
-        if (numGuess === 11) {
+        if (numGuess === 10) {
             displayGuess(guess);
             displayMessage(`Game over. The random number was ${randomNumber}`);
             endGame();
@@ -64,8 +64,25 @@ function displayGuess(guess) {
     remaining.innerHTML = `${11 - numGuess}`;
 }
 
+
+function endGame() {
+    
+
+    if(userInput.value <= 0) {
+       // userInput.value = "";
+    userInput.setAttribute("disabled", "");
+    p.classList.add("button");
+    p.innerHTML = `<h1 id="newGame">Start new game</h1>`;
+    startOver[0].appendChild(p); // Use startOver as it's an array-like NodeList
+    playGame = false;
+    p.addEventListener("click", function () {
+        newGame(); // Restart the game logic
+    });
+    }
+}
+
 function newGame() {
-    const NewGaneButton = document.querySelector("#newGame");
+    const newGameButton = document.querySelector("#newGame");
     newGameButton.addEventListener("click", (e) => {
         randomNumber = parseInt(Math.random() * 100 + 1);
         prevGuess = [];
@@ -75,17 +92,5 @@ function newGame() {
         userInput.removeAttribute("disabled");
         startOver.remove(p);
         playGame = true;
-    });
-}
-
-function endGame() {
-    userInput.value = "";
-    userInput.setAttribute("disabled", "");
-    p.classList.add("button");
-    p.innerHTML = `<h1 id="newGame">Start new game</h1>`;
-    startOver[0].appendChild(p); // Use startOver as it's an array-like NodeList
-    playGame = false;
-    p.addEventListener("click", function () {
-        newGame(); // Restart the game logic
     });
 }
