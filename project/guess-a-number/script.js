@@ -64,7 +64,6 @@ function displayGuess(guess) {
     remaining.innerHTML = `${11 - numGuess}`;
 }
 
-
 function endGame() {
     
 
