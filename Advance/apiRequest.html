@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: black; color: azure;">
+    <center>
+    <div class="api">
+        <span class="img"></span><br>
+        <span class="followers"></span><br>
+        <span class="following"></span><br>
+        <span class="location"></span>
+    </div></center>
+</body>
+<script>
+    const requestUrl = 'https://api.github.com/users/58Harshil';
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', requestUrl);
+
+    xhr.onreadystatechange = function() {
+        if(xhr.readyState === 4 && xhr.status === 200){
+            const data = JSON.parse(this.responseText);
+            console.log(data);
+            
+            // Select the existing elements from the body
+            const imgSpan = document.querySelector('.img');
+            const followersSpan = document.querySelector('.followers');
+            const followingSpan = document.querySelector('.following');
+            const locationSpan = document.querySelector('.location');
+/*
+            // Create an img element and append it to the img span
+            const img = document.createElement('img');
+            img.src = data.avatar_url;  // Use the avatar_url from the GitHub API response
+            img.alt = data.login;  // Set alt text to the user's login
+            img.style.width = '150px';  // Set the image width
+            img.style.borderRadius = '50%';  // Optional: make the image circular
+            imgSpan.appendChild(img);  // Append img to the existing img span
+*/
+            // Set the content of the followers and following spans
+            imgSpan.innerHTML = `<img src="${data.avatar_url}" alt="${data.login}" style="width: 150px; border-radius: 50%;">`;
+
+            followersSpan.textContent = `Followers: ${data.followers}`;  // Display the number of followers
+            followingSpan.textContent = `Following: ${data.following}`;  // Display the number of following
+            locationSpan.textContent = `Location: ${data.location}`;  // Display the user's location
+        }
+    };
+
+    xhr.send();
+</script>
+</html>
