@@ -43,3 +43,4 @@ console.log(addTwo(3,4));
 
 const myArray = [1,2,3,4]
 //myArray.forEach(()=>());
+
